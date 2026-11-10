@@ -1,0 +1,7 @@
+pandas==3.1.1
+numpy==2.5.4
+scikit-learn==1.9.1
+xgboost==3.4.1
+flask==X.X.X
+gunicorn
+Python ===3.12.3
