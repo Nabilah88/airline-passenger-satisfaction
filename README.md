@@ -10,7 +10,7 @@ How it could be used: an airline could use the model to estimate satisfaction fo
 
 ## Dataset
 
-- Source: <Kaggle dataset name and link>
+- Source: (https://www.kaggle.com/datasets/teejmahal20/airline-passenger-satisfaction)
 - Files: `data/train.csv` (103,904 rows) and `data/test.csv`, both committed in this repo.
 - Target: `satisfaction` (satisfied / neutral or dissatisfied).
 - Features (22): gender, customer type, age, type of travel, class, flight distance, 14 service ratings (1-5, where 0 means "not applicable"), and departure and arrival delay in minutes.
