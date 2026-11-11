@@ -1,6 +1,7 @@
 import requests
 
-url = 'http://localhost:9696/predict'
+#url = 'http://localhost:9696/predict'
+url ='https://airline-passenger-satisfaction-sxek.onrender.com/predict'
 
 passenger = {
  'gender': 'female',

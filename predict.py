@@ -9,6 +9,10 @@ with open(model_file, 'rb') as f_in:
 
 app = Flask('airline-satisfaction')
 
+@app.route('/', methods=['GET'])
+def home():
+    return jsonify({'status': 'ok', 'usage': 'POST passenger data to /predict'})
+
 
 @app.route('/predict', methods=['POST'])
 def predict():
