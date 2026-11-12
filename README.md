@@ -2,11 +2,13 @@
 
 Machine learning project for the [ML Zoomcamp](https://github.com/DataTalksClub/machine-learning-zoomcamp) midterm (DataTalks.Club).
 
+(screenshots/passengers-on-an-aircraft-shutterstock_376099216.avif)
+
 ## Problem description
 
-Airlines collect survey feedback to understand how passengers experienced a flight, but surveys only reach some passengers and arrive after the fact. This project builds a binary classifier that predicts whether a passenger will be **satisfied** or **neutral/dissatisfied**, based on their profile, trip details, flight delays and ratings of services such as online boarding, wifi and seat comfort.
+Many airlines collect passenger surveys to understand how passengers experienced a flight, but it is hard to tell which parts of the experience matter most for overall satisfaction. This project builds a binary classifier that predicts whether a passenger will be **satisfied** or **neutral/dissatisfied**, based on the passenger's profile, trip details, flight delays and ratings of services such as online boarding, wifi and seat comfort. Beyond the predictions, the model's feature importances show which factors it relies on most, so an airline can see where improvements, such as a better online boarding process, are most likely to matter.
 
-How it could be used: an airline could use the model to estimate satisfaction for passengers who did not answer a survey, and to see which services are most associated with satisfaction, which helps decide where to improve. The model is a learning project and a decision-support tool, not a replacement for real feedback.
+How it could be used: an airline could use the model's feature importances to see which parts of the experience, such as online boarding or inflight wifi, are most associated with passenger satisfaction, and so decide where improvements matter most. The model can also estimate overall satisfaction from a passenger's profile, trip details and service ratings, for example when a survey was only partly completed. It is a learning project and a decision-support tool, not a replacement for real feedback.
 
 ## Dataset
 
@@ -30,9 +32,21 @@ How it could be used: an airline could use the model to estimate satisfaction fo
 | Random forest (tuned)       | 0.994          |
 | XGBoost (tuned)             | 0.995          |
 
-On the held-out `test.csv`, the final model scores **AUC 0.995** and **accuracy 0.963**. These match the validation results. I checked for leakage: the target is not among the features, and no rows are shared between the train and test files.
-
 The most important features for the model are online boarding, type of travel, inflight wifi, customer type and class. These show what the model relies on, not what causes satisfaction.
+
+### Feature importance
+
+The five most important features for the final XGBoost model are:
+
+| Feature                           | Importance |
+| --------------------------------- | ---------- |
+| online_boarding                   | 0.42       |
+| type_of_travel = business_travel  | 0.15       |
+| inflight_wifi_service             | 0.12       |
+| customer_type = disloyal_customer | 0.06       |
+| class = business                  | 0.05       |
+
+Together, the top five account for about 79% of the model's total importance, and online boarding alone for 42%. These features also showed the largest differences in satisfaction in the EDA. Importance shows what the model relies on for its predictions, not what causes satisfaction.
 
 ## Repository structure
 
@@ -131,4 +145,16 @@ Text values must be lowercase with underscores (for example `business_travel`), 
 
 ## Cloud deployment
 
-<URL, or a screenshot or video of the deployed service>
+The service is deployed on [Render](https://render.com) as a Docker web service (free tier):
+
+**URL:** https://airline-passenger-satisfaction-sxek.onrender.com/predict(POST)
+
+Deployed by connecting this GitHub repository to a Render Web Service with the language set to Docker. Render builds the `Dockerfile` and sets the `PORT` variable, which the container reads.
+
+To test it, set `url` in `predict_test.py` to the address above and run `python predict_test.py`.
+
+![Deployment test](screenshots/deployed-screen.png)
+![Deployment test](screenshots/deployed-screen1.png)
+![On terminal test](screenshots/run.png)
+
+Note: the free tier sleeps after about 15 minutes without traffic, so the first request may take up to a minute.
