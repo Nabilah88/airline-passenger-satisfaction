@@ -2,7 +2,7 @@
 
 Machine learning project for the [ML Zoomcamp](https://github.com/DataTalksClub/machine-learning-zoomcamp) midterm (DataTalks.Club).
 
-(screenshots/passengers-on-an-aircraft-shutterstock_376099216.avif)
+![Passengers in the plane](screenshots/passengers.jpg)
 
 ## Problem description
 
@@ -12,8 +12,10 @@ How it could be used: an airline could use the model's feature importances to se
 
 ## Dataset
 
-- Source: (https://www.kaggle.com/datasets/teejmahal20/airline-passenger-satisfaction)
-- Files: `data/train.csv` (103,904 rows) and `data/test.csv`, both committed in this repo.
+Source: [Airline Passenger Satisfaction (Kaggle)](https://www.kaggle.com/datasets/teejmahal20/airline-passenger-satisfaction), modified from [John D's customer satisfaction dataset](https://www.kaggle.com/johndddddd/customer-satisfaction). Neither Kaggle page states clear license terms. The data is used here for educational purposes only, and full credit goes to the original authors.
+
+Files: `data/train.csv` (103,904 rows) and `data/test.csv`, both committed in this repo.
+
 - Target: `satisfaction` (satisfied / neutral or dissatisfied).
 - Features (22): gender, customer type, age, type of travel, class, flight distance, 14 service ratings (1-5, where 0 means "not applicable"), and departure and arrival delay in minutes.
 
@@ -147,8 +149,8 @@ Text values must be lowercase with underscores (for example `business_travel`), 
 
 The service is deployed on [Render](https://render.com) as a Docker web service (free tier):
 
-**URL:** https://airline-passenger-satisfaction-sxek.onrender.com/predict(POST)
-
+**Status page:** https://airline-passenger-satisfaction-sxek.onrender.com/
+**Prediction endpoint:** https://airline-passenger-satisfaction-sxek.onrender.com/predict (POST only; opening it in a browser shows "Method Not Allowed")git status
 Deployed by connecting this GitHub repository to a Render Web Service with the language set to Docker. Render builds the `Dockerfile` and sets the `PORT` variable, which the container reads.
 
 To test it, set `url` in `predict_test.py` to the address above and run `python predict_test.py`.
