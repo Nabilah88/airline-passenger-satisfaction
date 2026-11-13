@@ -28,5 +28,6 @@ passenger = {
  'arrival_delay_in_minutes': 0.0
  }
 
+print('Sending request to:', url)
 response = requests.post(url, json=passenger).json()
 print(response)
