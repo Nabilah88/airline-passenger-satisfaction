@@ -16,7 +16,6 @@ output_path = 'model.bin'
 
 
 
-
 def load_and_clean(path):
     df = pd.read_csv(path)
     df = df.drop(columns=['Unnamed: 0', 'id'])
@@ -40,7 +39,6 @@ X_train = dv.fit_transform(df_train.drop(columns=['satisfaction']).to_dict(orien
 
 model = xgb.XGBClassifier(n_estimators=100, max_depth=7, learning_rate=0.3, random_state=1, n_jobs=-1)
 model.fit(X_train, y_train)
-
 
 
 
