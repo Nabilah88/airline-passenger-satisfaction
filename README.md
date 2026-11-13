@@ -157,6 +157,6 @@ To test it, set `url` in `predict_test.py` to the address above and run `python 
 
 ![Deployment test](screenshots/deployed-screen.png)
 ![Deployment test](screenshots/deployed-screen1.png)
-![On terminal test](screenshots/run.png)
+![On terminal test](screenshots/test-run.png)
 
 Note: the free tier sleeps after about 15 minutes without traffic, so the first request may take up to a minute.
