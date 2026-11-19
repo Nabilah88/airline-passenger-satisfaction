@@ -68,7 +68,7 @@ Together, the top five account for about 79% of the model's total importance, an
 ### 1. Set up the environment
 
 ```bash
-git clone <repo-url>
+git clone https://github.com/Nabilah88/airline-passenger-satisfaction
 cd <repo-folder>
 python -m venv .venv
 source .venv/Scripts/activate    # Windows (Git Bash); on macOS/Linux: source .venv/bin/activate
